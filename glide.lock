@@ -1,0 +1,10 @@
+hash: 9e76b94290eb69bd9523f25402bf472649d312408debbb581a545e75f4afff53
+updated: 2018-02-14T09:27:57.456814268Z
+imports:
+- name: k8s.io/apiextensions-apiserver
+  version: 7834cbca45df0a948e708cddb4afe9625d93d312
+- name: k8s.io/apimachinery
+  version: 180eddb345a5be3a157cea1c624700ad5bd27b8f
+- name: k8s.io/client-go
+  version: 78700dec6369ba22221b72770783300f143df150
+testImports: []
