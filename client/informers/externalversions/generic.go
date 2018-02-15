@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/aku105/kube-custom-controller/apis/test/v1alpha1"
+	v1alpha1 "github.com/amitkr0201/kube-custom-controller/apis/test/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

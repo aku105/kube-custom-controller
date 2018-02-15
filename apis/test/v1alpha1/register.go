@@ -1,7 +1,7 @@
 package v1alpha1
 
 import (
-	azureredistest "github.com/aku105/kube-custom-controller/apis/test"
+	azureredistest "github.com/amitkr0201/kube-custom-controller/apis/test"
 	apiextensionsv1beta1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"

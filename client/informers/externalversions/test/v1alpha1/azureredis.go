@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	test_v1alpha1 "github.com/aku105/kube-custom-controller/apis/test/v1alpha1"
-	versioned "github.com/aku105/kube-custom-controller/client/clientset/versioned"
-	internalinterfaces "github.com/aku105/kube-custom-controller/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/aku105/kube-custom-controller/client/listers/test/v1alpha1"
+	test_v1alpha1 "github.com/amitkr0201/kube-custom-controller/apis/test/v1alpha1"
+	versioned "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
+	internalinterfaces "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/amitkr0201/kube-custom-controller/client/listers/test/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

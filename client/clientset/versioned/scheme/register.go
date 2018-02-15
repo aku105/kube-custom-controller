@@ -17,7 +17,7 @@ limitations under the License.
 package scheme
 
 import (
-	testv1alpha1 "github.com/aku105/kube-custom-controller/apis/test/v1alpha1"
+	testv1alpha1 "github.com/amitkr0201/kube-custom-controller/apis/test/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

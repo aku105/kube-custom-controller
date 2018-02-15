@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/aku105/kube-custom-controller/client/clientset/versioned"
-	internalinterfaces "github.com/aku105/kube-custom-controller/client/informers/externalversions/internalinterfaces"
-	test "github.com/aku105/kube-custom-controller/client/informers/externalversions/test"
+	versioned "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
+	internalinterfaces "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/internalinterfaces"
+	test "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/test"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
