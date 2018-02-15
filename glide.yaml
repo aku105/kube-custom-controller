@@ -3,4 +3,3 @@ import:
   - package: k8s.io/client-go
     version: v6.0.0
   - package: k8s.io/apiextensions-apiserver
-  - package: k8s.io/apimachinery
