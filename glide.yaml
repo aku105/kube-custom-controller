@@ -2,4 +2,3 @@ package: github.com/aku105/kube-custom-controller
 import:
   - package: k8s.io/client-go
     version: v6.0.0
-  - package: k8s.io/apiextensions-apiserver
