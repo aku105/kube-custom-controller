@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # CircleCI Go images available at: https://hub.docker.com/r/circleci/golang/
+      - image: circleci/golang:1.9
+
+    working_directory: /go/src/github.com/amitkr0201/kube-custom-controller
+
+    environment:
+      TEST_RESULTS: /tmp/test-results
+
+    steps:
+      - checkout
+      - run: mkdir -p $TEST_RESULTS
+
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+
+      # Install glide
+      - run: curl https://glide.sh/get | sh
+
+      # Normally, this step would be in a custom primary image;
+      # we've added it here for the sake of explanation.
+      - run: glide up -v
+
+
+      - save_cache:
+          key: v1-pkg-cache
+          paths:
+            - "/go/pkg"
+
+      - run:
+          name: Run it
+          command: |
+            go run main.go
