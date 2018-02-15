@@ -19,8 +19,8 @@ limitations under the License.
 package test
 
 import (
-	internalinterfaces "github.com/aku105/kube-custom-controller/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/aku105/kube-custom-controller/client/informers/externalversions/test/v1alpha1"
+	internalinterfaces "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/test/v1alpha1"
 )
 
 // Interface provides access to each of this group's versions.

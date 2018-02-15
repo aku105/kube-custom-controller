@@ -17,8 +17,8 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/aku105/kube-custom-controller/apis/test/v1alpha1"
-	"github.com/aku105/kube-custom-controller/client/clientset/versioned/scheme"
+	v1alpha1 "github.com/amitkr0201/kube-custom-controller/apis/test/v1alpha1"
+	"github.com/amitkr0201/kube-custom-controller/client/clientset/versioned/scheme"
 	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	rest "k8s.io/client-go/rest"
 )

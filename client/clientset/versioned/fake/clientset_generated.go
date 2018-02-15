@@ -17,9 +17,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/aku105/kube-custom-controller/client/clientset/versioned"
-	testv1alpha1 "github.com/aku105/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1"
-	faketestv1alpha1 "github.com/aku105/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1/fake"
+	clientset "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
+	testv1alpha1 "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1"
+	faketestv1alpha1 "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

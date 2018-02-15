@@ -17,7 +17,7 @@ limitations under the License.
 package versioned
 
 import (
-	testv1alpha1 "github.com/aku105/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1"
+	testv1alpha1 "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned/typed/test/v1alpha1"
 	glog "github.com/golang/glog"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
