@@ -2,5 +2,5 @@ package test
 
 const (
 	// GroupName for export
-	GroupName = "test"
+	GroupName = "test.example.net"
 )
