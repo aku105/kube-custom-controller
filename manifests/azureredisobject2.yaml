@@ -1,0 +1,10 @@
+apiVersion: test.example.net/v1alpha1
+kind: AzureRedis
+metadata:
+  name: test-object-443
+spec:
+  location: northeurope1
+  sku: Basic
+  size: C12
+  resourceGroup: amit-test-rg-123
+  name: amit-test-redis

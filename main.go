@@ -14,14 +14,18 @@ import (
 )
 
 var (
-	kuberconfig = flag.String("kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
-	master      = flag.String("master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
+	kubeconfig = flag.String("kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
+	master     = flag.String("master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
 )
 
 func main() {
 	flag.Parse()
 
-	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kuberconfig)
+	if kubeconfig == nil {
+		log.Printf("No kubeconfig provided. Doing nothing.")
+	}
+
+	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kubeconfig)
 	if err != nil {
 		log.Printf("Error building kubeconfig: %v", err)
 	}
