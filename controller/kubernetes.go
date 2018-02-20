@@ -78,7 +78,7 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 	defer utilruntime.HandleCrash()
 	defer c.queue.ShutDown()
 
-	log.Println("Starting kubewatch controller")
+	log.Println("Starting AzureRedis controller")
 
 	go c.informer.Informer().Run(stopCh)
 
@@ -87,7 +87,7 @@ func (c *Controller) Run(stopCh <-chan struct{}) {
 		return
 	}
 
-	log.Println("Kubewatch controller synced and ready")
+	log.Println("AzureRedis controller synced and ready")
 
 	wait.Until(c.runWorker, time.Second, stopCh)
 }
@@ -139,7 +139,7 @@ func (c *Controller) processItem(key string) error {
 		fmt.Println("CRD deleted - ", key)
 		return nil
 	}
-	fmt.Println("Created a new crd ", Obj.(*v1alpha1.AzureRedis).Name, " in resource group ", Obj.(*v1alpha1.AzureRedis).Spec.ResourceGroup)
+	log.Println("Creating a new", Obj.(*v1alpha1.AzureRedis).Name, "in resource group", Obj.(*v1alpha1.AzureRedis).Spec.ResourceGroup)
 	c.ProcessConfig(*Obj.(*v1alpha1.AzureRedis))
 	return nil
 }
@@ -147,7 +147,8 @@ func (c *Controller) processItem(key string) error {
 // ProcessConfig Process config for CRD
 func (c *Controller) ProcessConfig(Obj v1alpha1.AzureRedis) {
 
-	log.Println("Processing request for ", Obj.Name, " in Resource group: ", Obj.Spec.ResourceGroup)
+	log.Println("Processing request for", Obj.Name, "in Resource group:", Obj.Spec.ResourceGroup)
+	return
 
 	// directory := "/tmp/gitworkspace/" + Obj.GetObjectMeta().GetResourceVersion() + "/*"
 	// log.Println("Directory Path - ", directory)

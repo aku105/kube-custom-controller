@@ -44,6 +44,9 @@ type AzureRedisSpec struct {
 
 	// Name of the Azure Redis instance. Must be unique accross an Azure region.
 	Name string `json:"name"`
+
+	// Tags to put on the objects
+	Tags *map[string]*string `json:"tags,omitempty"`
 }
 
 // AzureRedisStatus is the status for AzureRedis CRD
