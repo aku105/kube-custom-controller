@@ -23,8 +23,7 @@ func main() {
 
 	if *kubeconfig == "" {
 		log.Printf("No kubeconfig provided. Doing nothing.")
-		sigterm := make(chan os.Signal, 1)
-		<-sigterm
+		os.Exit(0)
 	}
 
 	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kubeconfig)
