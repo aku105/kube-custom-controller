@@ -19,11 +19,11 @@ jobs:
             - v1-pkg-cache
 
       # Install glide
-      - run: curl https://glide.sh/get | sh
+      - run: curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
       # Normally, this step would be in a custom primary image;
       # we've added it here for the sake of explanation.
-      - run: glide up -v
+      - run: dep ensure -v
 
 
       - save_cache:

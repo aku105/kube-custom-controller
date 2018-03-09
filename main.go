@@ -2,38 +2,38 @@ package main
 
 import (
 	"flag"
-	"log"
 	"os"
 	"os/signal"
 	"syscall"
 
-	azureRedisClientSet "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
 	controller "github.com/amitkr0201/kube-custom-controller/controller"
+	azureRedisClientSet "github.com/amitkr0201/kube-custom-controller/pkg/client/clientset/versioned"
+	"github.com/golang/glog"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 )
 
 var (
-	kubeconfig = flag.String("kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
-	master     = flag.String("master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
+	masterURL  string
+	kubeconfig string
 )
 
 func main() {
 	flag.Parse()
 
-	if *kubeconfig == "" {
-		log.Printf("No kubeconfig provided. Doing nothing.")
+	if kubeconfig == "" {
+		glog.Fatalf("No kubeconfig provided. Doing nothing.")
 		os.Exit(0)
 	}
 
-	cfg, err := clientcmd.BuildConfigFromFlags(*master, *kubeconfig)
+	cfg, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
 	if err != nil {
-		log.Printf("Error building kubeconfig: %v", err)
+		glog.Fatalf("Error building kubeconfig: %s", err.Error())
 	}
 
 	azureRedisClient, err := azureRedisClientSet.NewForConfig(cfg)
 	if err != nil {
-		log.Printf("Error building example clientset: %v", err)
+		glog.Fatalf("Error building example clientset: %s", err.Error())
 	}
 	kubeclient, _ := kubernetes.NewForConfig(cfg)
 	c := controller.NewController(azureRedisClient, kubeclient)
@@ -45,4 +45,9 @@ func main() {
 	signal.Notify(sigterm, syscall.SIGTERM)
 	signal.Notify(sigterm, syscall.SIGINT)
 	<-sigterm
+}
+
+func init() {
+	flag.StringVar(&kubeconfig, "kubeconfig", "", "Path to a kubeconfig. Only required if out-of-cluster.")
+	flag.StringVar(&masterURL, "master", "", "The address of the Kubernetes API server. Overrides any value in kubeconfig. Only required if out-of-cluster.")
 }
