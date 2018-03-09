@@ -5,10 +5,13 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	controller "github.com/amitkr0201/kube-custom-controller/controller"
 	azureRedisClientSet "github.com/amitkr0201/kube-custom-controller/pkg/client/clientset/versioned"
+	informers "github.com/amitkr0201/kube-custom-controller/pkg/client/informers/externalversions"
 	"github.com/golang/glog"
+	kubeinformers "k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 )
@@ -22,7 +25,7 @@ func main() {
 	flag.Parse()
 
 	if kubeconfig == "" {
-		glog.Fatalf("No kubeconfig provided. Doing nothing.")
+		glog.Errorf("No kubeconfig provided. Doing nothing.")
 		os.Exit(0)
 	}
 
@@ -31,10 +34,19 @@ func main() {
 		glog.Fatalf("Error building kubeconfig: %s", err.Error())
 	}
 
+	kubeClient, err := kubernetes.NewForConfig(cfg)
+	if err != nil {
+		glog.Fatalf("Error building kubernetes clientset: %s", err.Error())
+	}
+
 	azureRedisClient, err := azureRedisClientSet.NewForConfig(cfg)
 	if err != nil {
 		glog.Fatalf("Error building example clientset: %s", err.Error())
 	}
+
+	kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
+	exampleInformerFactory := informers.NewSharedInformerFactory(azureRedisClient, time.Second*30)
+
 	kubeclient, _ := kubernetes.NewForConfig(cfg)
 	c := controller.NewController(azureRedisClient, kubeclient)
 	stopCh := make(chan struct{})
