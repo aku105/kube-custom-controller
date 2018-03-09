@@ -5,10 +5,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/amitkr0201/kube-custom-controller/apis/test/v1alpha1"
-	azureredisclientset "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
-	azureredisinformer "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions"
-	azureredisconfiginformer "github.com/amitkr0201/kube-custom-controller/client/informers/externalversions/test/v1alpha1"
+	"github.com/amitkr0201/kube-custom-controller/pkg/apis/azurerediscontroller/v1alpha1"
+	azureredisclientset "github.com/amitkr0201/kube-custom-controller/pkg/client/clientset/versioned"
+	azureredisinformer "github.com/amitkr0201/kube-custom-controller/pkg/client/informers/externalversions"
+	azureredisconfiginformer "github.com/amitkr0201/kube-custom-controller/pkg/client/informers/externalversions/azurerediscontroller/v1alpha1"
 
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/apimachinery/pkg/util/wait"
@@ -35,7 +35,7 @@ func NewController(crdclientset azureredisclientset.Interface, kubeclient kubern
 	fmt.Println("new Controller called.")
 
 	azureRedisInfromersfactory := azureredisinformer.NewSharedInformerFactory(crdclientset, time.Second*30)
-	azureRedises := azureRedisInfromersfactory.Test().V1alpha1().AzureRedises()
+	azureRedises := azureRedisInfromersfactory.Azurerediscontroller().V1alpha1().AzureRedises()
 	configsqueue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
 	log.Println("Setting up event handlers")
 

@@ -6,8 +6,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	azureRedisClientSet "github.com/amitkr0201/kube-custom-controller/client/clientset/versioned"
 	controller "github.com/amitkr0201/kube-custom-controller/controller"
+	azureRedisClientSet "github.com/amitkr0201/kube-custom-controller/pkg/client/clientset/versioned"
 	"github.com/golang/glog"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"

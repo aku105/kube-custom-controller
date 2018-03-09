@@ -46,7 +46,7 @@ type AzureRedisSpec struct {
 	Name string `json:"name"`
 
 	// Tags to put on the objects
-	Tags *map[string]*string `json:"tags,omitempty"`
+	// Tags *map[string]string `json:"tags,omitempty"`
 }
 
 // AzureRedisStatus is the status for AzureRedis CRD
